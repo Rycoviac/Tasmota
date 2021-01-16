@@ -482,7 +482,7 @@ uint8_t fade = 255;
 uint8_t width = 255;
 uint8_t fxgamma = 255;
 uint8_t fxreverse = 255;
-uint32_t fxcolor[NUM_COLORS];
+uint32_t fxcolor[MAX_NUM_COLORS];
 
 uint16_t convertSpeed(uint8_t value)
 {
@@ -599,14 +599,14 @@ uint32_t getWsColor(uint8_t n)
 
 void convertSettingsColors( void )
 {
-  for (uint8_t i=0; i < NUM_COLORS; i++) { 
+  for (uint8_t i=0; i < MAX_NUM_COLORS; i++) { 
     fxcolor[i] = getWsColor(i); 
   }
 }
 
 bool IsSameSettingsColors(void)
 {
-  for (uint8_t i=0; i < NUM_COLORS; i++){
+  for (uint8_t i=0; i < MAX_NUM_COLORS; i++){
     if ( getWsColor(i) != fxcolor[i]) { return false; }
   }
   return true;
@@ -616,7 +616,7 @@ void Ws2812ModuleSelected(void)
 {
   if (PinUsed(GPIO_WS2812)) {  // RGB led
 
-    ws2812fx = new WS2812FX(Settings.light_pixels, pin[GPIO_WS2812], NEO_GRB + NEO_KHZ800);
+    ws2812fx = new WS2812FX(Settings.light_pixels, Pin(GPIO_WS2812), NEO_GRB + NEO_KHZ800);
     ws2812fx->init();
 
     strip = new NeoPixelBus<selectedNeoFeatureType, selectedNeoSpeedType>(WS2812_MAX_LEDS, Pin(GPIO_WS2812));
@@ -724,11 +724,11 @@ void MqttShowXState(void)
 
 void CmndFxState(void)
 {
-  mqtt_data[0] = '\0';
+  TasmotaGlobal.mqtt_data[0] = '\0';
   ResponseAppendTime(); 
-  LightState(1);
+  ResponseLightState(1);
   ResponseAppend_P(PSTR(",\"" D_CMND_PIXELS "\":%d"),Settings.light_pixels);
-  for(uint8_t i=0; i < NUM_COLORS; i++){
+  for(uint8_t i=0; i < MAX_NUM_COLORS; i++){
     ResponseAppend_P(PSTR(",\"" D_CMND_COLOR "%d\":\"%02x%02x%02x\""), i+3, 
       Settings.ws_color[i][WS_RED],Settings.ws_color[i][WS_GREEN],Settings.ws_color[i][WS_BLUE]);
   }
@@ -738,7 +738,7 @@ void CmndFxState(void)
     (const char*)ws2812fx->getModeName(i-(LS_MAX+WS2812_SCHEMES)) ) ) ;
   ResponseJsonEnd();
   MqttPublishPrefixTopic_P(STAT, PSTR(D_CMND_FX_STATE));
-  mqtt_data[0] = '\0';
+  TasmotaGlobal.mqtt_data[0] = '\0';
 
   // AddLog_P2(LOG_LEVEL_INFO, "Options=%02x", ws2812fx->getOptions(0));
 }
