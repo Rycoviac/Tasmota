@@ -614,6 +614,7 @@ struct {
   int8_t        hum_comp;                  // F08
   uint8_t       wifi_channel;              // F09
   uint8_t       wifi_bssid[6];             // F0A
+  uint8_t       fx_fade;                   // F0B
   uint8_t       as3935_sensor_cfg[5];      // F10
   As3935IntCfg  as3935_functions;          // F15
   As3935Param   as3935_parameter;          // F16
