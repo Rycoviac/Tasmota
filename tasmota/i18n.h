@@ -440,6 +440,10 @@
 #define D_CMND_WHITE "White"
 #define D_CMND_WIDTH "Width"
 
+// ws2812fx support
+#define D_CMND_FX_STATE "XState"
+#define D_CMND_FX_FADE "XFade"
+
 // Commands xdrv_05_irremote.ino
 #define D_CMND_IRSEND "IRSend"
   #define D_JSON_INVALID_JSON "Invalid JSON"
