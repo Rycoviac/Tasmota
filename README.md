@@ -1,6 +1,8 @@
 This is a port of the WS2812FX integration to the newer Tasmota-version 9.2.0 and newest libs from Nanopixel and WS2812FX.
 Original fork can be found here: https://github.com/a-roz/Tasmota
 
+In order to use the hass.io integration for Tasmota, you need 9.2.0 or later, see: https://www.home-assistant.io/integrations/tasmota
+
 So far, I can compile successfully, but run into problems with the build. The created .bin can be flashed on the ESP8266, but cant save the device to generic. Instead it reverted back to the default Sonoff device.
 I sadly need help to compile it to a working .bin firmware...
 Can someone please help with this?
