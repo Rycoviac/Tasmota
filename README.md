@@ -1,9 +1,13 @@
+This is a port of the WS2812FX integration to the newer Tasmota-version 9.2.0 and newest libs from Nanopixel and WS2812FX.
+Original fork can be found here: https://github.com/a-roz/Tasmota
+
+So far, I can compile successfully, but run into problems with the build. The created .bin can be flashed on the ESP8266, but cant save the device to generic. Instead it reverted back to the default Sonoff device.
+I sadly need help to compile it to a working .bin firmware...
+Can someone please help with this?
+
+
 ![Tasmota logo](/tools/logo/TASMOTA_FullLogo_Vector.svg)
 ![WS2812FX library](https://raw.githubusercontent.com/kitesurfer1404/WS2812FX/master/WS2812FX_logo.png)
-
-Attention:
-This is a port of the WS2812FX integration to the newer Tasmota-version 9.2.0.
-Original fork can be found here: https://github.com/a-roz/Tasmota
 
 ------------------------------- Original readme.md from a-roz -------------------------------
 
