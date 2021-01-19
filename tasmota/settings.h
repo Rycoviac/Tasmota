@@ -614,7 +614,6 @@ struct {
   int8_t        hum_comp;                  // F08
   uint8_t       wifi_channel;              // F09
   uint8_t       wifi_bssid[6];             // F0A
-  uint8_t       fx_fade;                   // F0B
   uint8_t       as3935_sensor_cfg[5];      // F10
   As3935IntCfg  as3935_functions;          // F15
   As3935Param   as3935_parameter;          // F16
@@ -642,8 +641,9 @@ struct {
   uint8_t       shd_leading_edge;          // F5B
   uint16_t      shd_warmup_brightness;     // F5C
   uint8_t       shd_warmup_time;           // F5E
+  uint8_t       fx_fade;                   // F5F  <-- have to be added HERE
 
-  uint8_t       free_f5e[72];              // F5E - Decrement if adding new Setting variables just above and below
+  uint8_t       free_f5e[71];              // F5F - Decrement if adding new Setting variables just above and below
 
   // Only 32 bit boundary variables below
 
